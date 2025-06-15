@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id" class="">
+
+<head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRAFTIVE - Detail Paket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    transitionProperty: {
+                        'all': 'all',
+                    },
+                    colors: {
+                        'primary-yellow': '#FACC15',
+                        'secondary-cyan': '#22D3EE',
+                        'tertiary-green': '#4ADE80',
+                    }
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hamburger-line {
+            display: block;
+            width: 24px;
+            height: 3px;
+            margin: 4px auto;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: #000;
+        }
+
+        .dark .hamburger-line {
+            background-color: #fff;
+        }
+
+        .hamburger.open .hamburger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open .hamburger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    </style>
+</head>
+
+<body class="transition-all duration-500 bg-white text-black dark:bg-slate-900 dark:text-white">
+    <header class="flex justify-between items-center px-6 py-4 bg-gray-100 dark:bg-slate-950 text-black dark:text-white shadow-lg transition-all duration-500 sticky top-0 z-50">
+        <h1 class="text-3xl font-bold text-primary-yellow">CRAFTIVE</h1>
+        <nav class="hidden md:flex space-x-6 text-lg font-medium">
+            <a href="index.html#layanan" class="hover:text-primary-yellow transition duration-300 py-1">Layanan</a>
+            <a href="index.html#portofolio" class="hover:text-primary-yellow transition duration-300 py-1">Portofolio</a>
+            <a href="index.html#alasan" class="hover:text-primary-yellow transition duration-300 py-1">Mengapa Kami</a>
+            <a href="index.html#harga" class="hover:text-primary-yellow transition duration-300 py-1">Harga</a>
+            <a href="index.html#testimoni" class="hover:text-primary-yellow transition duration-300 py-1">Testimoni</a>
+            <a href="index.html#faq" class="hover:text-primary-yellow transition duration-300 py-1">FAQ</a>
+            <a href="index.html#kontak" class="hover:text-primary-yellow transition duration-300 py-1">Kontak</a>
+            <button onclick="toggleMode()" class="ml-4 px-4 py-2 bg-primary-yellow text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md">🌓 Mode</button>
+        </nav>
+
+        <div class="md:hidden flex items-center">
+            <button onclick="toggleMode()" class="px-3 py-1 bg-primary-yellow text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md mr-4">🌓</button>
+            <button id="hamburger" name="hamburger-menu" aria-label="Toggle Navigation Menu" class="hamburger focus:outline-none">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-100 dark:bg-slate-950 z-40 hidden flex-col items-center justify-center space-y-8 text-xl transition-all duration-500 md:hidden">
+        <a href="index.html#layanan" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Layanan</a>
+        <a href="index.html#portofolio" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Portofolio</a>
+        <a href="index.html#alasan" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Mengapa Kami</a>
+        <a href="index.html#harga" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Harga</a>
+        <a href="index.html#testimoni" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Testimoni</a>
+        <a href="index.html#faq" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">FAQ</a>
+        <a href="index.html#kontak" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Kontak</a>
+    </div>
+
+    <main class="py-16 px-6 max-w-5xl mx-auto transition-all duration-500">
+        <a href="index.html#harga" class="inline-flex items-center text-primary-yellow hover:underline mb-8">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Kembali ke Harga
+        </a>
+
+        <h2 id="package-title" class="text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-12" data-aos="fade-up"></h2>
+
+        <div id="package-content" class="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-xl shadow-lg transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-center text-xl text-gray-700 dark:text-gray-300">Memuat detail paket...</p>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="index.html#kontak" class="bg-primary-yellow text-black px-8 py-4 rounded-full font-bold text-xl hover:bg-yellow-300 transition duration-300 shadow-xl btn-pulse">
+                Pesan Sekarang!
+            </a>
+        </div>
+    </main>
+
+    <footer class="text-center py-8 bg-gray-100 dark:bg-slate-950 text-black dark:text-white transition-all duration-500">
+        <div class="flex justify-center gap-8 mb-6">
+            <a href="https://instagram.com/craftive_official" target="_blank" aria-label="Kunjungi Instagram CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
+                <img src="asset/instagram.png" alt="Instagram Logo" class="h-8 w-8">
+                <span class="text-sm">Instagram</span>
+            </a>
+            <a href="https://wa.me/6281234567890" target="_blank" aria-label="Hubungi CRAFTIVE via WhatsApp" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
+                <img src="asset/whatsapp.png" alt="WhatsApp Logo" class="h-8 w-8">
+                <span class="text-sm">WhatsApp</span>
+            </a>
+            <a href="mailto:info@craftive.com" aria-label="Kirim Email ke CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
+                <img src="asset/gmail.png" alt="Gmail Logo" class="h-8 w-8">
+                <span class="text-sm">Email</span>
+            </a>
+        </div>
+
+        <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center gap-2 text-lg font-semibold z-40">
+            <img src="asset/whatsapp.png" alt="WhatsApp Icon" class="h-6 w-6">
+            Chat via WhatsApp
+        </a>
+
+        <p class="text-gray-600 dark:text-gray-400 mt-4">&copy; 2025 CRAFTIVE. Semua hak dilindungi undang-undang.</p>
+    </footer>
+
+    <script>
+        // Common functions for dark mode and mobile menu
+        function toggleMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                document.body.style.overflow = mobileMenu.classList.contains('flex') ? 'hidden' : 'auto';
+            });
+
+            // Specific logic for paket-detail.html
+            const urlParams = new URLSearchParams(window.location.search);
+            const paketType = urlParams.get('paket');
+            const packageTitle = document.getElementById('package-title');
+            const packageContent = document.getElementById('package-content');
+
+            let title = "Detail Paket Kami";
+            let contentHtml = `<p class="text-center text-gray-700 dark:text-gray-300 mb-8">Pilih jenis paket yang ingin Anda lihat detailnya.</p>`;
+            let features = [];
+
+            if (paketType === 'website') {
+                title = "Detail Paket Pembuatan Website";
+                features = [
+                    "Desain Kustom & Modern",
+                    "Responsif untuk Desktop & Mobile",
+                    "Integrasi CMS (Content Management System) seperti WordPress",
+                    "Optimasi SEO Dasar",
+                    "Keamanan SSL Gratis",
+                    "Form Kontak Interaktif",
+                    "Galeri Foto/Video",
+                    "Integrasi Google Maps",
+                    "Pelatihan Penggunaan Dasar",
+                    "Dukungan Teknis 3 Bulan",
+                    "Revisi Mayor: 2x, Revisi Minor: Tanpa Batas*",
+                    "Estimasi Waktu Pengerjaan: 2-4 Minggu",
+                    "Harga: Mulai Rp 500.000 (disesuaikan dengan fitur)",
+                    "*Syarat & Ketentuan berlaku untuk revisi tanpa batas."
+                ];
+            } else if (paketType === 'uiux') {
+                title = "Detail Paket Desain UI/UX";
+                features = [
+                    "Analisis Kebutuhan Pengguna & Riset Kompetitor",
+                    "User Flow & Wireframing",
+                    "Desain Antarmuka (UI) Modern & Estetis",
+                    "Pengalaman Pengguna (UX) yang Intuitif",
+                    "Prototype Interaktif (Figma/Adobe XD)",
+                    "User Testing (opsional, biaya tambahan)",
+                    "Panduan Desain Sistem (Design System)",
+                    "Source File Lengkap & Siap Implementasi",
+                    "Revisi: 3x Mayor, 5x Minor",
+                    "Estimasi Waktu Pengerjaan: 3-7 Hari per Halaman",
+                    "Harga Mobile Desain: Mulai Rp 35.000 / Halaman",
+                    "Harga Web Desain: Mulai Rp 45.000 / Halaman"
+                ];
+            } else if (paketType === 'grafis') {
+                title = "Detail Paket Desain Grafis";
+                features = [
+                    "Konsultasi Konsep Desain",
+                    "Berbagai Jenis Desain: Logo, Brosur, Banner, Kartu Nama, Poster, Media Sosial Post, dll.",
+                    "Kualitas Gambar Resolusi Tinggi (300 DPI)",
+                    "Konsep Desain Awal: 2-3 Pilihan",
+                    "Revisi: 3x Mayor, 5x Minor",
+                    "Source File Lengkap (AI, PSD, EPS, SVG)",
+                    "Format Ekspor Umum (PNG, JPG, PDF)",
+                    "Free Mockup Presentasi",
+                    "Estimasi Waktu Pengerjaan: 2-5 Hari per Desain",
+                    "Harga: Mulai Rp 100.000 (tergantung kompleksitas)"
+                ];
+            } else {
+                title = "Detail Paket Kami";
+                contentHtml = `<p class="text-center text-gray-700 dark:text-gray-300 mb-8">Mohon pilih jenis paket yang ingin Anda lihat detailnya dari halaman <a href="index.html#harga" class="text-primary-yellow hover:underline">Harga</a>.</p>`;
+            }
+
+            packageTitle.innerText = title;
+            if (features.length > 0) {
+                contentHtml = `<ul class="list-disc list-inside space-y-3 text-lg text-gray-700 dark:text-gray-200">`;
+                features.forEach(feature => {
+                    contentHtml += `<li>${feature}</li>`;
+                });
+                contentHtml += `</ul>
+                                <p class="mt-8 text-center text-md text-gray-600 dark:text-gray-400">Untuk informasi lebih lanjut dan penawaran kustom, jangan ragu untuk menghubungi tim kami.</p>`;
+            }
+            packageContent.innerHTML = contentHtml;
+        });
+
+        function closeMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            hamburger.classList.remove('open');
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>
