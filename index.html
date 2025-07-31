@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="">
-
+<html lang="id">
 <head>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta charset="UTF-8" />
@@ -16,109 +15,57 @@
                         'all': 'all',
                     },
                     colors: {
-                        'primary-yellow': '#FACC15', // Kuning dari yellow-400
-                        'secondary-cyan': '#22D3EE', // Cyan dari cyan-400
-                        'tertiary-green': '#4ADE80', // Hijau dari green-400
+                        'primary-yellow': '#FACC15',
+                        'secondary-cyan': '#22D3EE',
+                        'tertiary-green': '#4ADE80',
                     }
                 },
             },
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .hamburger-line {
-            display: block;
-            width: 24px;
-            height: 3px;
-            margin: 4px auto;
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-            background-color: #000;
-        }
-
-        .dark .hamburger-line {
-            background-color: #fff;
-        }
-
-        .hamburger.open .hamburger-line:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .hamburger.open .hamburger-line:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.open .hamburger-line:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        @keyframes pulse-once {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        .btn-pulse:hover {
-            animation: pulse-once 0.5s ease-in-out;
-        }
-
-        .accordion-header {
-            cursor: pointer;
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        .accordion-header:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        .dark .accordion-header:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
-            padding: 0 1.5rem;
-        }
-
-        .accordion-content.open {
-            max-height: 500px;
-            padding: 1rem 1.5rem 1.5rem;
-        }
-        .accordion-icon {
-            transition: transform 0.3s;
-        }
-        .accordion-header.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Theme Initialization Script - Harus dijalankan sebelum body load -->
+    <script>
+        // Initialize theme immediately to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('craftive-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            
+            // Save theme if not already saved
+            if (!savedTheme) {
+                localStorage.setItem('craftive-theme', theme);
+            }
+        })();
+    </script>
 </head>
-
 <body class="transition-all duration-500 bg-white text-black dark:bg-slate-900 dark:text-white">
     <header class="flex justify-between items-center px-6 py-4 bg-gray-100 dark:bg-slate-950 text-black dark:text-white shadow-lg transition-all duration-500 sticky top-0 z-50">
-        <h1 class="text-3xl font-bold text-primary-yellow">CRAFTIVE</h1>
+        <h1 class="text-3xl font-bold text-yellow-400">CRAFTIVE</h1>
         <nav class="hidden md:flex space-x-6 text-lg font-medium">
-            <a href="#layanan" class="hover:text-primary-yellow transition duration-300 py-1">Layanan</a>
-            <a href="#portofolio" class="hover:text-primary-yellow transition duration-300 py-1">Portofolio</a>
-            <a href="#alasan" class="hover:text-primary-yellow transition duration-300 py-1">Mengapa Kami</a>
-            <a href="#harga" class="hover:text-primary-yellow transition duration-300 py-1">Harga</a>
-            <a href="#testimoni" class="hover:text-primary-yellow transition duration-300 py-1">Testimoni</a>
-            <a href="#faq" class="hover:text-primary-yellow transition duration-300 py-1">FAQ</a>
-            <a href="#kontak" class="hover:text-primary-yellow transition duration-300 py-1">Kontak</a>
-            <button onclick="toggleMode()" class="ml-4 px-4 py-2 bg-primary-yellow text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md">🌓 Mode</button>
+            <a href="#layanan" class="hover:text-yellow-400 transition duration-300 py-1">Layanan</a>
+            <a href="#portofolio" class="hover:text-yellow-400 transition duration-300 py-1">Portofolio</a>
+            <a href="#alasan" class="hover:text-yellow-400 transition duration-300 py-1">Mengapa Kami</a>
+            <a href="#harga" class="hover:text-yellow-400 transition duration-300 py-1">Harga</a>
+            <a href="#testimoni" class="hover:text-yellow-400 transition duration-300 py-1">Testimoni</a>
+            <a href="#faq" class="hover:text-yellow-400 transition duration-300 py-1">FAQ</a>
+            <a href="#kontak" class="hover:text-yellow-400 transition duration-300 py-1">Kontak</a>
+            <button id="theme-toggle" class="ml-4 px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md">
+                <span id="theme-icon">🌓</span> Mode
+            </button>
         </nav>
-
         <div class="md:hidden flex items-center">
-            <button onclick="toggleMode()" class="px-3 py-1 bg-primary-yellow text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md mr-4">🌓</button>
+            <button id="theme-toggle-mobile" class="px-3 py-1 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md mr-4">
+                <span id="theme-icon-mobile">🌓</span>
+            </button>
             <button id="hamburger" name="hamburger-menu" aria-label="Toggle Navigation Menu" class="hamburger focus:outline-none">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -128,81 +75,94 @@
     </header>
 
     <div id="mobile-menu" class="fixed inset-0 bg-gray-100 dark:bg-slate-950 z-40 hidden flex-col items-center justify-center space-y-8 text-xl transition-all duration-500 md:hidden">
-        <a href="#layanan" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Layanan</a>
-        <a href="#portofolio" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Portofolio</a>
-        <a href="#alasan" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Mengapa Kami</a>
-        <a href="#harga" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Harga</a>
-        <a href="#testimoni" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Testimoni</a>
-        <a href="#faq" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">FAQ</a>
-        <a href="#kontak" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Kontak</a>
+        <a href="#layanan" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">Layanan</a>
+        <a href="#portofolio" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">Portofolio</a>
+        <a href="#alasan" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">Mengapa Kami</a>
+        <a href="#harga" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">Harga</a>
+        <a href="#testimoni" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">Testimoni</a>
+        <a href="#faq" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">FAQ</a>
+        <a href="#kontak" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">Kontak</a>
     </div>
 
-    <section class="text-center py-20 px-4 max-w-4xl mx-auto transition-all duration-500" data-aos="fade-up">
-        <h2 class="text-5xl font-extrabold text-primary-yellow leading-tight mb-4">JASA DESAIN UI/UX MURAH & BERKUALITAS PREMIUM</h2>
-        <p class="mt-4 text-xl leading-relaxed">CRAFTIVE adalah mitra terpercaya Anda untuk desain UI/UX yang inovatif dan fungsional. Kami hadir dengan solusi desain digital profesional yang disesuaikan untuk kebutuhan bisnis maupun personal Anda, dengan harga yang bersahabat.</p>
+    <!-- Hero Section -->
+    <section class="text-center py-20 px-4 max-w-4xl mx-auto transition-all duration-500 mt-20" data-aos="fade-up">
+        <h2 class="text-5xl font-extrabold text-yellow-400 leading-tight mb-4">JASA DESAIN UI/UX MURAH & BERKUALITAS PREMIUM</h2>
+        <p class="mt-4 text-xl leading-relaxed text-gray-700 dark:text-gray-300">CRAFTIVE adalah mitra terpercaya Anda untuk desain UI/UX yang inovatif dan fungsional. Kami hadir dengan solusi desain digital profesional yang disesuaikan untuk kebutuhan bisnis maupun personal Anda, dengan harga yang bersahabat.</p>
         <div class="flex flex-wrap justify-center gap-5 mt-8">
-            <button class="bg-primary-yellow text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-yellow-300 shadow-xl btn-pulse">Desain UI/UX</button>
-            <button class="bg-secondary-cyan text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-cyan-300 shadow-xl btn-pulse">Desain Grafis</button>
-            <button class="bg-tertiary-green text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-green-300 shadow-xl btn-pulse">Pembuatan Website</button>
+            <button class="bg-yellow-400 text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-yellow-300 shadow-xl">Desain UI/UX</button>
+            <button class="bg-cyan-400 text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-cyan-300 shadow-xl">Desain Grafis</button>
+            <button class="bg-green-400 text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-green-300 shadow-xl">Pembuatan Website</button>
         </div>
         <div class="flex flex-col md:flex-row justify-center gap-12 mt-12 text-2xl font-semibold">
             <div data-aos="zoom-in" data-aos-delay="200">
-                <p class="text-4xl font-bold text-primary-yellow">358+</p>
+                <p class="text-4xl font-bold text-yellow-400">358+</p>
                 <p class="text-base text-gray-700 dark:text-gray-300 mt-1">Pelanggan Puas</p>
             </div>
             <div data-aos="zoom-in" data-aos-delay="300">
-                <p class="text-4xl font-bold text-primary-yellow">386+</p>
+                <p class="text-4xl font-bold text-yellow-400">386+</p>
                 <p class="text-base text-gray-700 dark:text-gray-300 mt-1">Proyek Selesai</p>
             </div>
         </div>
     </section>
 
-    <section id="layanan" class="py-16 bg-gray-100 dark:bg-slate-800 transition-all duration-500" data-aos="fade-up">
+    <!-- Section Layanan -->
+    <section id="layanan" class="py-16 bg-gradient-to-br from-slate-100 to-slate-300 dark:from-slate-700 dark:to-slate-900 text-gray-900 dark:text-white transition-all duration-500" data-aos="fade-up">
         <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">Layanan Unggulan CRAFTIVE</h3>
         <div class="grid md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-t-4 border-primary-yellow">
-                <h4 class="text-2xl font-bold text-primary-yellow mb-3">Desain UI/UX Inovatif</h4>
-                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">Kami menciptakan **antarmuka pengguna (UI) yang intuitif** dan **pengalaman pengguna (UX) yang memukau**, memastikan setiap interaksi terasa lancar dan menyenangkan untuk website serta aplikasi Anda. Hasilnya adalah produk digital yang menarik dan mudah digunakan.</p>
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-yellow-400">
+                <h4 class="text-2xl font-bold text-yellow-400 mb-3">Desain UI/UX Inovatif</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">Kami menciptakan <strong>antarmuka pengguna (UI) yang intuitif</strong> dan <strong>pengalaman pengguna (UX) yang memukau</strong>, memastikan setiap interaksi terasa lancar dan menyenangkan untuk website serta aplikasi Anda. Hasilnya adalah produk digital yang menarik dan mudah digunakan.</p>
             </div>
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-t-4 border-secondary-cyan">
-                <h4 class="text-2xl font-bold text-secondary-cyan mb-3">Desain Grafis Komprehensif</h4>
-                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">Perkuat identitas merek Anda dengan **desain grafis yang profesional**. Mulai dari logo yang berkesan, brosur informatif, hingga materi pemasaran digital dan cetak, kami memastikan visual Anda selalu menonjol dan menyampaikan pesan dengan efektif.</p>
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-cyan-400">
+                <h4 class="text-2xl font-bold text-cyan-400 mb-3">Desain Grafis Komprehensif</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">Perkuat identitas merek Anda dengan <strong>desain grafis yang profesional</strong>. Mulai dari logo yang berkesan, brosur informatif, hingga materi pemasaran digital dan cetak, kami memastikan visual Anda selalu menonjol dan menyampaikan pesan dengan efektif.</p>
             </div>
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-t-4 border-tertiary-green">
-                <h4 class="text-2xl font-bold text-tertiary-green mb-3">Pengembangan Website Profesional</h4>
-                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">Kami membangun **website yang modern, responsif di semua perangkat, dan dioptimalkan untuk SEO**. Dari landing page sederhana hingga platform e-commerce kompleks, website Anda akan siap untuk meraih kesuksesan online dan menarik lebih banyak pelanggan.</p>
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-green-400">
+                <h4 class="text-2xl font-bold text-green-400 mb-3">Pengembangan Website Profesional</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">Kami membangun <strong>website yang modern, responsif di semua perangkat, dan dioptimalkan untuk SEO</strong>. Dari landing page sederhana hingga platform e-commerce kompleks, website Anda akan siap untuk meraih kesuksesan online dan menarik lebih banyak pelanggan.</p>
             </div>
         </div>
     </section>
 
+    <!-- ALASAN SECTION -->
     <section id="alasan" class="py-16 px-6 transition-all duration-500" data-aos="fade-up">
-        <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">Mengapa Memilih CRAFTIVE sebagai Mitra Desain Anda?</h3>
+        <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">
+            Mengapa Memilih CRAFTIVE sebagai Mitra Desain Anda?
+        </h3>
         <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-l-4 border-primary-yellow">
-                <h4 class="text-2xl font-semibold text-primary-yellow mb-3">Gratis Konsultasi Mendalam</h4>
-                <p class="text-base text-gray-700 dark:text-gray-300">Kami percaya pada pendekatan kolaboratif. Dapatkan sesi konsultasi gratis sebelum memulai proyek Anda, memastikan setiap detail desain selaras dengan visi dan kebutuhan spesifik Anda. Kepuasan Anda adalah prioritas kami.</p>
+            <div class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-l-4 border-yellow-400">
+                <h4 class="text-2xl font-semibold text-yellow-400 mb-3">Gratis Konsultasi Mendalam</h4>
+                <p class="text-base text-gray-700 dark:text-gray-300">
+                    Kami percaya pada pendekatan kolaboratif. Dapatkan sesi konsultasi gratis sebelum memulai proyek Anda, memastikan setiap detail desain selaras dengan visi dan kebutuhan spesifik Anda. Kepuasan Anda adalah prioritas kami.
+                </p>
             </div>
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-l-4 border-primary-yellow">
-                <h4 class="text-2xl font-semibold text-primary-yellow mb-3">Harga Sangat Bersahabat</h4>
-                <p class="text-base text-gray-700 dark:text-gray-300">Kualitas premium tidak harus mahal. Kami menawarkan harga yang sangat kompetitif dan terjangkau untuk semua kalangan, tanpa mengorbankan kualitas desain. Dapatkan hasil terbaik dengan investasi yang efisien.</p>
+            <div class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-l-4 border-yellow-400">
+                <h4 class="text-2xl font-semibold text-yellow-400 mb-3">Harga Sangat Bersahabat</h4>
+                <p class="text-base text-gray-700 dark:text-gray-300">
+                    Kualitas premium tidak harus mahal. Kami menawarkan harga yang sangat kompetitif dan terjangkau untuk semua kalangan, tanpa mengorbankan kualitas desain. Dapatkan hasil terbaik dengan investasi yang efisien.
+                </p>
             </div>
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-l-4 border-primary-yellow">
-                <h4 class="text-2xl font-semibold text-primary-yellow mb-3">Desain Responsif & Optimal</h4>
-                <p class="text-base text-gray-700 dark:text-gray-300">Setiap desain kami dibangun dengan filosofi responsif. Artinya, tampilan website atau aplikasi Anda akan selalu optimal dan menarik, baik saat diakses dari desktop, tablet, maupun smartphone, memberikan pengalaman terbaik bagi setiap pengguna.</p>
+            <div class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:scale-105 transition duration-300 border-l-4 border-yellow-400">
+                <h4 class="text-2xl font-semibold text-yellow-400 mb-3">Desain Responsif & Optimal</h4>
+                <p class="text-base text-gray-700 dark:text-gray-300">
+                    Setiap desain kami dibangun dengan filosofi responsif. Artinya, tampilan website atau aplikasi Anda akan selalu optimal dan menarik, baik saat diakses dari desktop, tablet, maupun smartphone, memberikan pengalaman terbaik bagi setiap pengguna.
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="harga" class="py-16 bg-gradient-to-br from-slate-700 to-slate-900 text-white transition-all duration-500" data-aos="fade-up">
+    <!-- HARGA SECTION -->
+    <section id="harga" class="py-16 bg-gradient-to-br from-slate-100 to-slate-300 dark:from-slate-700 dark:to-slate-900 text-gray-900 dark:text-white transition-all duration-500" data-aos="fade-up">
         <h3 class="text-4xl text-center font-bold mb-12">Investasi Cerdas untuk Desain Digital Anda</h3>
         <div class="grid md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
-            <div class="bg-gray-800 p-8 rounded-[2rem] text-white shadow-xl flex flex-col justify-between hover:scale-105 transition duration-300 border-t-8 border-primary-yellow">
+            <!-- Paket Website -->
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-xl flex flex-col justify-between hover:scale-105 transition duration-300 border-t-8 border-yellow-400">
                 <div>
-                    <h4 class="text-3xl font-bold text-primary-yellow mb-4">Pembuatan Website</h4>
-                    <p class="mt-2 text-lg">Mulai dari harga</p>
-                    <p class="text-4xl font-extrabold text-primary-yellow mt-2">Rp 500.000</p>
-                    <p class="text-sm text-gray-300">*(Harga dapat disesuaikan berdasarkan kompleksitas fitur)</p>
-                    <ul class="mt-6 space-y-3 text-lg">
+                    <h4 class="text-3xl font-bold text-yellow-400 mb-4">Pembuatan Website</h4>
+                    <p class="mt-2 text-lg text-gray-800 dark:text-gray-300">Mulai dari harga</p>
+                    <p class="text-4xl font-extrabold text-yellow-400 mt-2">Rp 500.000</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">*(Harga dapat disesuaikan berdasarkan kompleksitas fitur)</p>
+                    <ul class="mt-6 space-y-3 text-lg text-gray-800 dark:text-gray-200">
                         <li>✅ Revisi Tanpa Batas*</li>
                         <li>✅ Hosting Gratis 1 Tahun</li>
                         <li>✅ Domain Kustom Gratis 1 Tahun</li>
@@ -211,16 +171,16 @@
                         <li>✅ Dukungan Teknis</li>
                     </ul>
                 </div>
-                <a href="paket-detail.html?paket=website" class="mt-8 bg-primary-yellow text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition duration-300 text-lg shadow-md text-center btn-pulse">Lihat Detail Paket</a>
+                <a href="paket-detail.html?paket=website" class="mt-8 bg-yellow-400 text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition duration-300 text-lg shadow-md text-center btn-pulse">Lihat Detail Paket</a>
             </div>
-
-            <div class="bg-gray-800 p-8 rounded-[2rem] text-white shadow-xl flex flex-col justify-between hover:scale-105 transition duration-300 border-t-8 border-primary-yellow">
+            <!-- Paket UI/UX -->
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-xl flex flex-col justify-between hover:scale-105 transition duration-300 border-t-8 border-yellow-400">
                 <div>
-                    <h4 class="text-3xl font-bold text-primary-yellow mb-4">Desain UI/UX</h4>
-                    <p class="mt-2 text-lg">Mulai dari harga</p>
-                    <p class="text-2xl font-bold text-primary-yellow mt-2">Rp 35.000 <span class="text-white">/ Halaman (Mobile)</span></p>
-                    <p class="text-2xl font-bold text-primary-yellow">Rp 45.000 <span class="text-white">/ Halaman (Web)</span></p>
-                    <ul class="mt-6 space-y-3 text-lg">
+                    <h4 class="text-3xl font-bold text-yellow-400 mb-4">Desain UI/UX</h4>
+                    <p class="mt-2 text-lg text-gray-800 dark:text-gray-300">Mulai dari harga</p>
+                    <p class="text-2xl font-bold text-yellow-400 mt-2">Rp 35.000 <span class="text-gray-800 dark:text-white">/ Halaman (Mobile)</span></p>
+                    <p class="text-2xl font-bold text-yellow-400">Rp 45.000 <span class="text-gray-800 dark:text-white">/ Halaman (Web)</span></p>
+                    <ul class="mt-6 space-y-3 text-lg text-gray-800 dark:text-gray-200">
                         <li>✅ Custom Warna & Gaya Desain</li>
                         <li>✅ Pembuatan Prototype Interaktif</li>
                         <li>✅ Free Mockup Presentasi</li>
@@ -228,16 +188,16 @@
                         <li>✅ Revisi Minor</li>
                     </ul>
                 </div>
-                <a href="paket-detail.html?paket=uiux" class="mt-8 bg-primary-yellow text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition duration-300 text-lg shadow-md text-center btn-pulse">Lihat Detail Paket</a>
+                <a href="paket-detail.html?paket=uiux" class="mt-8 bg-yellow-400 text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition duration-300 text-lg shadow-md text-center btn-pulse">Lihat Detail Paket</a>
             </div>
-
-            <div class="bg-gray-800 p-8 rounded-[2rem] text-white shadow-xl flex flex-col justify-between hover:scale-105 transition duration-300 border-t-8 border-primary-yellow">
+            <!-- Paket Grafis -->
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-xl flex flex-col justify-between hover:scale-105 transition duration-300 border-t-8 border-yellow-400">
                 <div>
-                    <h4 class="text-3xl font-bold text-primary-yellow mb-4">Desain Grafis</h4>
-                    <p class="mt-2 text-lg">Mulai dari harga</p>
-                    <p class="text-4xl font-extrabold text-primary-yellow mt-2">Rp 100.000</p>
-                    <p class="text-sm text-gray-300">*(Tergantung jenis desain, misal: logo, banner, dll.)</p>
-                    <ul class="mt-6 space-y-3 text-lg">
+                    <h4 class="text-3xl font-bold text-yellow-400 mb-4">Desain Grafis</h4>
+                    <p class="mt-2 text-lg text-gray-800 dark:text-gray-300">Mulai dari harga</p>
+                    <p class="text-4xl font-extrabold text-yellow-400 mt-2">Rp 100.000</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">*(Tergantung jenis desain, misal: logo, banner, dll.)</p>
+                    <ul class="mt-6 space-y-3 text-lg text-gray-800 dark:text-gray-200">
                         <li>✅ Konsultasi Konsep Desain</li>
                         <li>✅ Kualitas Gambar Resolusi Tinggi</li>
                         <li>✅ Free Mockup Presentasi</li>
@@ -245,131 +205,165 @@
                         <li>✅ Revisi Minor</li>
                     </ul>
                 </div>
-                <a href="paket-detail.html?paket=grafis" class="mt-8 bg-primary-yellow text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition duration-300 text-lg shadow-md text-center btn-pulse">Lihat Detail Paket</a>
+                <a href="paket-detail.html?paket=grafis" class="mt-8 bg-yellow-400 text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition duration-300 text-lg shadow-md text-center btn-pulse">Lihat Detail Paket</a>
             </div>
         </div>
     </section>
 
+    <!-- Portofolio -->
     <section id="portofolio" class="py-16 px-6 transition-all duration-500" data-aos="fade-up">
         <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">Jelajahi Karya Terbaik Kami</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
-                <img src="asset/techhcomp.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX Aplikasi Tech Comp" onclick="openModal(this.src, 'Desain UI/UX Modern untuk Aplikasi Manajemen Proyek Tech Comp. Fokus pada kemudahan navigasi dan visual yang bersih.')">
+                <img src="/asset/techhcomp.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX Aplikasi Tech Comp" onclick="openModal(this.src, 'Desain UI/UX Modern untuk Aplikasi Manajemen Proyek Tech Comp. Fokus pada kemudahan navigasi dan visual yang bersih.')">
                 <div class="p-4">
-                    <h4 class="font-bold text-lg text-primary-yellow">Aplikasi Manajemen Proyek</h4>
+                    <h4 class="font-bold text-lg text-yellow-400">Aplikasi Manajemen Proyek</h4>
                     <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Mobile & Web</p>
                 </div>
             </div>
             <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
-                <img src="asset/cafe.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX Aplikasi Pemesanan Cafe" onclick="openModal(this.src, 'Antarmuka aplikasi pemesanan untuk kedai kopi modern, menonjolkan visual makanan dan minuman yang menarik.')">
+                <img src="/asset/cafe.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX Aplikasi Pemesanan Cafe" onclick="openModal(this.src, 'Antarmuka aplikasi pemesanan untuk kedai kopi modern, menonjolkan visual makanan dan minuman yang menarik.')">
                 <div class="p-4">
-                    <h4 class="font-bold text-lg text-primary-yellow">Aplikasi Pemesanan Cafe</h4>
+                    <h4 class="font-bold text-lg text-yellow-400">Aplikasi Pemesanan Cafe</h4>
                     <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Mobile</p>
                 </div>
             </div>
             <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
-                <img src="asset/sepatu.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX E-commerce Sepatu" onclick="openModal(this.src, 'Desain website e-commerce yang berfokus pada pengalaman berbelanja sepatu yang mulus dan visual produk yang memikat.')">
+                <img src="/asset/sepatu.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX E-commerce Sepatu" onclick="openModal(this.src, 'Desain website e-commerce yang berfokus pada pengalaman berbelanja sepatu yang mulus dan visual produk yang memikat.')">
                 <div class="p-4">
-                    <h4 class="font-bold text-lg text-primary-yellow">Website E-commerce Sepatu</h4>
+                    <h4 class="font-bold text-lg text-yellow-400">Website E-commerce Sepatu</h4>
                     <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Web</p>
                 </div>
             </div>
             <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
-                <img src="https://via.placeholder.com/400x300/FFD700/000000?text=Desain+Logo+Brand" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain Logo Brand Fashion" onclick="openModal(this.src, 'Koleksi desain logo kreatif untuk berbagai jenis brand, dari fashion hingga teknologi.')">
+                <img src="/asset/semafut.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain Logo Brand Fashion" onclick="openModal(this.src, 'Desain kreatif logo tim Football asal Yogyakarta.')">
                 <div class="p-4">
-                    <h4 class="font-bold text-lg text-primary-yellow">Desain Logo & Branding</h4>
+                    <h4 class="font-bold text-lg text-yellow-400">Desain Logo Tim Football
+                    </h4>
                     <p class="text-sm text-gray-600 dark:text-gray-300">Desain Grafis</p>
                 </div>
             </div>
         </div>
         <div class="text-center mt-12">
-            <a href="portofolio-lengkap.html" class="bg-primary-yellow text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition duration-300 shadow-xl btn-pulse">Lihat Lebih Banyak Portofolio</a>
+            <a href="portofolio-lengkap.html" class="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition duration-300 shadow-xl btn-pulse">Lihat Lebih Banyak Portofolio</a>
         </div>
     </section>
 
-
+    <!-- Testimoni -->
     <section id="testimoni" class="py-16 bg-gray-100 dark:bg-slate-800 transition-all duration-500" data-aos="fade-up">
         <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">Apa Kata Klien Kami?</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg border-t-4 border-primary-yellow">
+            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg border-t-4 border-yellow-400">
                 <p class="text-lg italic text-gray-700 dark:text-gray-300 mb-4">"CRAFTIVE benar-benar melampaui ekspektasi kami! Desain UI/UX yang mereka buat sangat intuitif dan modern. Proses kerjanya profesional dan komunikasi selalu lancar. Sangat direkomendasikan!"</p>
                 <div class="flex items-center">
-                    <img src="https://via.placeholder.com/60x60/888888/FFFFFF?text=JP" alt="Foto Profil John Doe" class="w-14 h-14 rounded-full mr-4 object-cover">
                     <div>
-                        <p class="font-bold text-xl text-primary-yellow">John Doe</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">CEO, Tech Innovate</p>
+                        <p class="font-bold text-xl text-yellow-400">Anang</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Mahasiswa</p>
                     </div>
                 </div>
             </div>
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg border-t-4 border-secondary-cyan">
+            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg border-t-4 border-cyan-400">
                 <p class="text-lg italic text-gray-700 dark:text-gray-300 mb-4">"Desain grafis untuk branding kafe kami sungguh luar biasa! CRAFTIVE berhasil menangkap esensi merek kami dan menerjemahkannya ke dalam visual yang menarik. Selalu responsif terhadap masukan kami."</p>
                 <div class="flex items-center">
-                    <img src="https://via.placeholder.com/60x60/555555/FFFFFF?text=AS" alt="Foto Profil Anya Smith" class="w-14 h-14 rounded-full mr-4 object-cover">
                     <div>
-                        <p class="font-bold text-xl text-secondary-cyan">Anya Smith</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Pemilik, Kopi Senja</p>
+                        <p class="font-bold text-xl text-cyan-400">Anya</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Pemilik, Kopi Senjas</p>
                     </div>
                 </div>
             </div>
-            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg border-t-4 border-tertiary-green">
+            <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg border-t-4 border-green-400">
                 <p class="text-lg italic text-gray-700 dark:text-gray-300 mb-4">"Pengembangan website kami berjalan mulus dengan CRAFTIVE. Mereka sangat detail dan hasil akhirnya fungsional serta indah. Sangat puas dengan kecepatan dan kualitas pekerjaan mereka."</p>
                 <div class="flex items-center">
-                    <img src="https://via.placeholder.com/60x60/AAAAAA/FFFFFF?text=MR" alt="Foto Profil Michael Ray" class="w-14 h-14 rounded-full mr-4 object-cover">
                     <div>
-                        <p class="font-bold text-xl text-tertiary-green">Michael Ray</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Founder, Global Biz</p>
+                        <p class="font-bold text-xl text-green-400">Mustofa</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Pemilik, Toko Sepatu</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq" class="py-16 px-6 transition-all duration-500" data-aos="fade-up">
-        <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">Pertanyaan yang Sering Diajukan (FAQ)</h3>
-        <div class="max-w-3xl mx-auto space-y-4">
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm">
-                <div class="accordion-header bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white" onclick="toggleAccordion('faq1')">
-                    Bagaimana proses pengerjaan desain di CRAFTIVE?
-                    <span class="accordion-icon transform rotate-0 text-2xl">▼</span>
-                </div>
-                <div id="faq1" class="accordion-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200">
+    <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">Pertanyaan yang Sering Diajukan (FAQ)</h3>
+    <div class="max-w-3xl mx-auto space-y-4">
+        <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden">
+            <button class="faq-header w-full bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white p-4 text-left flex justify-between items-center hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors duration-300" data-target="faq1">
+                <span class="font-semibold">Bagaimana proses pengerjaan desain di CRAFTIVE?</span>
+                <span class="faq-icon text-2xl transform transition-transform duration-300">▼</span>
+            </button>
+            <div id="faq1" class="faq-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+                <div class="p-4 border-t border-gray-200 dark:border-gray-600">
                     <p>Proses kami dimulai dengan konsultasi gratis untuk memahami kebutuhan Anda. Setelah itu, kami akan membuat proposal dan jadwal. Setelah persetujuan, tim kami akan mulai mendesain, melakukan revisi berdasarkan masukan Anda, hingga finalisasi dan penyerahan aset.</p>
                 </div>
             </div>
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm">
-                <div class="accordion-header bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white" onclick="toggleAccordion('faq2')">
-                    Apakah ada jaminan revisi?
-                    <span class="accordion-icon transform rotate-0 text-2xl">▼</span>
-                </div>
-                <div id="faq2" class="accordion-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200">
+        </div>
+        
+        <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden">
+            <button class="faq-header w-full bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white p-4 text-left flex justify-between items-center hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors duration-300" data-target="faq2">
+                <span class="font-semibold">Apakah ada jaminan revisi?</span>
+                <span class="faq-icon text-2xl transform transition-transform duration-300">▼</span>
+            </button>
+            <div id="faq2" class="faq-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+                <div class="p-4 border-t border-gray-200 dark:border-gray-600">
                     <p>Ya, setiap paket layanan kami menyertakan jumlah revisi tertentu untuk memastikan hasil akhir sesuai dengan keinginan Anda. Untuk paket pembuatan website, kami menawarkan revisi tanpa batas* (syarat & ketentuan berlaku).</p>
                 </div>
             </div>
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm">
-                <div class="accordion-header bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white" onclick="toggleAccordion('faq3')">
-                    Berapa lama waktu yang dibutuhkan untuk menyelesaikan proyek?
-                    <span class="accordion-icon transform rotate-0 text-2xl">▼</span>
-                </div>
-                <div id="faq3" class="accordion-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200">
+        </div>
+        
+        <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden">
+            <button class="faq-header w-full bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white p-4 text-left flex justify-between items-center hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors duration-300" data-target="faq3">
+                <span class="font-semibold">Berapa lama waktu yang dibutuhkan untuk menyelesaikan proyek?</span>
+                <span class="faq-icon text-2xl transform transition-transform duration-300">▼</span>
+            </button>
+            <div id="faq3" class="faq-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+                <div class="p-4 border-t border-gray-200 dark:border-gray-600">
                     <p>Waktu pengerjaan bervariasi tergantung pada kompleksitas dan jenis proyek. Desain UI/UX mobile bisa memakan waktu 3-7 hari per halaman, sedangkan pembuatan website lengkap bisa 2-4 minggu. Kami akan memberikan estimasi waktu yang jelas di awal proyek.</p>
                 </div>
             </div>
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm">
-                <div class="accordion-header bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white" onclick="toggleAccordion('faq4')">
-                    Format file apa yang akan saya terima?
-                    <span class="accordion-icon transform rotate-0 text-2xl">▼</span>
-                </div>
-                <div id="faq4" class="accordion-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200">
+        </div>
+        
+        <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden">
+            <button class="faq-header w-full bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white p-4 text-left flex justify-between items-center hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors duration-300" data-target="faq4">
+                <span class="font-semibold">Format file apa yang akan saya terima?</span>
+                <span class="faq-icon text-2xl transform transition-transform duration-300">▼</span>
+            </button>
+            <div id="faq4" class="faq-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+                <div class="p-4 border-t border-gray-200 dark:border-gray-600">
                     <p>Anda akan menerima source file lengkap (misalnya Figma, Adobe XD untuk UI/UX; AI, PSD, EPS untuk desain grafis) beserta format ekspor yang umum (PNG, JPG, PDF, SVG) sesuai kebutuhan Anda.</p>
                 </div>
             </div>
         </div>
-    </section>
-
+        
+        <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden">
+            <button class="faq-header w-full bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white p-4 text-left flex justify-between items-center hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors duration-300" data-target="faq5">
+                <span class="font-semibold">Apakah CRAFTIVE melayani klien dari luar kota?</span>
+                <span class="faq-icon text-2xl transform transition-transform duration-300">▼</span>
+            </button>
+            <div id="faq5" class="faq-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+                <div class="p-4 border-t border-gray-200 dark:border-gray-600">
+                    <p>Tentu saja! Kami melayani klien dari seluruh Indonesia bahkan mancanegara. Semua komunikasi dan koordinasi dapat dilakukan secara online melalui video call, email, dan platform komunikasi digital lainnya.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden">
+            <button class="faq-header w-full bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-white p-4 text-left flex justify-between items-center hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors duration-300" data-target="faq6">
+                <span class="font-semibold">Bagaimana sistem pembayaran di CRAFTIVE?</span>
+                <span class="faq-icon text-2xl transform transition-transform duration-300">▼</span>
+            </button>
+            <div id="faq6" class="faq-content bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+                <div class="p-4 border-t border-gray-200 dark:border-gray-600">
+                    <p>Kami menerima pembayaran melalui transfer bank, e-wallet (OVO, GoPay, DANA), dan payment gateway lainnya. Sistem pembayaran dapat dilakukan secara bertahap: 50% di awal sebagai DP dan 50% setelah project selesai.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <div id="imageModal" class="fixed inset-0 z-50 bg-black bg-opacity-90 hidden flex-col items-center justify-center p-4">
-        <span class="absolute top-4 right-6 text-white text-5xl cursor-pointer hover:text-primary-yellow transition" onclick="closeModal()">&times;</span>
-        <img id="modalImg" class="max-w-[90%] max-h-[70vh] rounded-lg shadow-2xl object-contain mb-4" src="" alt="Preview Gambar Portofolio">
+        <span class="absolute top-4 right-6 text-white text-5xl cursor-pointer hover:text-yellow-400 transition" onclick="closeModal()">&times;</span>
+        <img id="modalImg" class="max-w-[90%] max-h-[70vh] rounded-lg shadow-2xl object-contain mb-4" src="/placeholder.svg" alt="Preview Gambar Portofolio">
         <p id="modalCaption" class="text-white text-lg text-center max-w-2xl"></p>
     </div>
 
@@ -380,15 +374,15 @@
             <form action="#" method="POST" class="space-y-6">
                 <div>
                     <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Nama Lengkap</label>
-                    <input type="text" id="nama" name="nama" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary-yellow focus:border-primary-yellow dark:bg-slate-800 dark:text-white" placeholder="Masukkan nama lengkap Anda" required>
+                    <input type="text" id="nama" name="nama" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400 dark:bg-slate-800 dark:text-white" placeholder="Masukkan nama lengkap Anda" required>
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary-yellow focus:border-primary-yellow dark:bg-slate-800 dark:text-white" placeholder="contoh@email.com" required>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400 dark:bg-slate-800 dark:text-white" placeholder="contoh@email.com" required>
                 </div>
                 <div>
                     <label for="layanan-minat" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Layanan yang Diminati</label>
-                    <select id="layanan-minat" name="layanan-minat" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary-yellow focus:border-primary-yellow dark:bg-slate-800 dark:text-white" required>
+                    <select id="layanan-minat" name="layanan-minat" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400 dark:bg-slate-800 dark:text-white" required>
                         <option value="">Pilih Layanan</option>
                         <option value="ui_ux">Desain UI/UX</option>
                         <option value="grafis">Desain Grafis</option>
@@ -398,20 +392,20 @@
                 </div>
                 <div>
                     <label for="pesan" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Pesan Anda</label>
-                    <textarea id="pesan" name="pesan" rows="5" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary-yellow focus:border-primary-yellow dark:bg-slate-800 dark:text-white" placeholder="Ceritakan kebutuhan desain Anda..." required></textarea>
+                    <textarea id="pesan" name="pesan" rows="5" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400 dark:bg-slate-800 dark:text-white" placeholder="Ceritakan kebutuhan desain Anda..." required></textarea>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="bg-primary-yellow text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition duration-300 shadow-xl btn-pulse">Kirim Pesan</button>
+                    <button type="submit" class="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition duration-300 shadow-xl btn-pulse">Kirim Pesan</button>
                 </div>
             </form>
             <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">Atau hubungi kami langsung:</p>
             <div class="flex justify-center gap-6 mt-4">
-                <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center gap-2 text-green-500 hover:text-green-600 transition duration-300 text-lg font-semibold">
-                    <img src="asset/whatsapp.png" alt="WhatsApp Icon" class="h-7 w-7">
+                <a href="https://wa.me/6285799745728" target="_blank" class="flex items-center gap-2 text-green-500 hover:text-green-600 transition duration-300 text-lg font-semibold">
+                    <img src="/asset/Whatsapp.png" alt="WhatsApp Icon" class="h-7 w-7">
                     WhatsApp
                 </a>
                 <a href="mailto:info@craftive.com" class="flex items-center gap-2 text-red-500 hover:text-red-600 transition duration-300 text-lg font-semibold">
-                    <img src="asset/gmail.png" alt="Gmail Icon" class="h-7 w-7">
+                    <img src="/asset/gmail.png" alt="Gmail Icon" class="h-7 w-7">
                     Email
                 </a>
             </div>
@@ -420,96 +414,33 @@
 
     <footer class="text-center py-8 bg-gray-100 dark:bg-slate-950 text-black dark:text-white transition-all duration-500">
         <div class="flex justify-center gap-8 mb-6">
-            <a href="https://instagram.com/craftive_official" target="_blank" aria-label="Kunjungi Instagram CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
-                <img src="asset/instagram.png" alt="Instagram Logo" class="h-8 w-8">
+            <a href="https://instagram.com/craftive_official" target="_blank" aria-label="Kunjungi Instagram CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-yellow-400 transition duration-300">
+                <img src="/asset/instagram.png" alt="Instagram Logo" class="h-8 w-8">
                 <span class="text-sm">Instagram</span>
             </a>
-            <a href="https://wa.me/6281234567890" target="_blank" aria-label="Hubungi CRAFTIVE via WhatsApp" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
-                <img src="asset/whatsapp.png" alt="WhatsApp Logo" class="h-8 w-8">
+            <a href="https://wa.me/6285799745728" target="_blank" aria-label="Hubungi CRAFTIVE via WhatsApp" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-yellow-400 transition duration-300">
+                <img src="/asset/Whatsapp.png" alt="WhatsApp Logo" class="h-8 w-8">
                 <span class="text-sm">WhatsApp</span>
             </a>
-            <a href="mailto:info@craftive.com" aria-label="Kirim Email ke CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
-                <img src="asset/gmail.png" alt="Gmail Logo" class="h-8 w-8">
+            <a href="mailto:info@craftive.com" aria-label="Kirim Email ke CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-yellow-400 transition duration-300">
+                <img src="/asset/gmail.png" alt="Gmail Logo" class="h-8 w-8">
                 <span class="text-sm">Email</span>
             </a>
         </div>
-
-        <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center gap-2 text-lg font-semibold z-40">
-            <img src="asset/whatsapp.png" alt="WhatsApp Icon" class="h-6 w-6">
+        <a href="https://wa.me/6285799745728" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center gap-2 text-lg font-semibold z-40">
+            <img src="/asset/Whatsapp.png" alt="WhatsApp Icon" class="h-6 w-6">
             Chat via WhatsApp
         </a>
-
-        <p class="text-gray-600 dark:text-gray-400 mt-4">&copy; 2025 CRAFTIVE. Semua hak dilindungi undang-undang.</p>
+        <p class="text-gray-600 dark:text-gray-400 mt-4">&copy; 2025 CRAFTIVE.</p>
     </footer>
 
-    <script>
-        function toggleMode() {
-            const root = document.documentElement;
-            root.classList.toggle('dark');
-            localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
-            AOS.init({
-                duration: 1000,
-                once: true,
-            });
-
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('open');
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('flex');
-                document.body.style.overflow = mobileMenu.classList.contains('flex') ? 'hidden' : 'auto';
-            });
-        });
-
-        function closeMobileMenu() {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobile-menu');
-            hamburger.classList.remove('open');
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        function openModal(src, caption) {
-            document.getElementById('modalImg').src = src;
-            document.getElementById('modalCaption').innerText = caption;
-            document.getElementById('imageModal').classList.remove('hidden');
-            document.getElementById('imageModal').classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('imageModal').classList.add('hidden');
-            document.getElementById('imageModal').classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        function toggleAccordion(id) {
-            const content = document.getElementById(id);
-            const header = content.previousElementSibling;
-
-            document.querySelectorAll('.accordion-content.open').forEach(openContent => {
-                if (openContent.id !== id) {
-                    openContent.classList.remove('open');
-                    openContent.previousElementSibling.classList.remove('active');
-                }
-            });
-
-            content.classList.toggle('open');
-            header.classList.toggle('active');
-        }
-    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
